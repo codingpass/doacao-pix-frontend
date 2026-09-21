@@ -122,21 +122,21 @@ export default function PixDonationCheckout() {
 
   function getImpactDescription(cents: number): string {
     if (cents === 1500) {
-      return 'Com R$ 15,00 você salva 1 vida! (Garante ração e cuidados básicos)';
+      return 'Com R$ 15,00 você salva 1 vida no PetVida! (Garante ração e cuidados básicos)';
     } else if (cents === 3000) {
-      return 'Com R$ 30,00 você salva 2 vidas! (Garante ração e medicamentos essenciais)';
+      return 'Com R$ 30,00 você salva 2 vidas no PetVida! (Garante ração e medicamentos essenciais)';
     } else if (cents === 5000) {
-      return 'Com R$ 50,00 você salva 3 vidas! (Garante ração, vacinas e tratamento completo)';
+      return 'Com R$ 50,00 você salva 3 vidas no PetVida! (Garante ração, vacinas e tratamento completo)';
     } else if (cents === 100000) {
-      return 'Com R$ 1.000,00 você salva um abrigo inteiro! (Alimenta e trata dezenas de animais)';
+      return 'Com R$ 1.000,00 você salva o abrigo PetVida inteiro! (Alimenta e trata dezenas de animais)';
     } else if (cents >= 10000) {
       const lives = Math.floor(cents / 1500);
       return 'Com ' + formatCentsToBRL(cents) + ' você salva cerca de ' + lives + ' vidas com resgate, ração e medicamentos!';
     } else if (cents >= 1500) {
       const lives = Math.floor(cents / 1500);
-      return 'Com ' + formatCentsToBRL(cents) + ' você garante alimentação e remédios para ' + lives + ' animal resgatado!';
+      return 'Com ' + formatCentsToBRL(cents) + ' você garante alimentação e remédios para ' + lives + ' animal resgatado no PetVida!';
     } else {
-      return 'Escolha um valor para ver o impacto direto na vida dos animais necessitados.';
+      return 'Escolha um valor para ver o impacto direto na vida dos animais necessitados do PetVida.';
     }
   }
 
@@ -198,7 +198,7 @@ export default function PixDonationCheckout() {
         setError(errorMsg);
       }
     } catch (err) {
-      setError('Não foi possível conectar ao servidor. Verifique se a API backend está em execução.');
+      setError('Não foi possível conectar ao servidor PetVida. Verifique se a API backend está em execução.');
     } finally {
       setLoading(false);
     }
@@ -301,7 +301,6 @@ export default function PixDonationCheckout() {
     return (
       <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3.5 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          {/* Overlapping Donor Avatars */}
           <div className="flex -space-x-2 overflow-hidden">
             <div className="inline-block h-7 w-7 rounded-full ring-2 ring-white bg-emerald-600 text-white font-black text-[10px] flex items-center justify-center shadow-sm">MS</div>
             <div className="inline-block h-7 w-7 rounded-full ring-2 ring-white bg-teal-600 text-white font-black text-[10px] flex items-center justify-center shadow-sm">CE</div>
@@ -334,7 +333,7 @@ export default function PixDonationCheckout() {
         <div className="flex items-center justify-between text-xs font-bold">
           <span className="text-slate-800 flex items-center gap-1">
             <TrendingUp className="w-3.5 h-3.5 text-emerald-600" />
-            Meta do Mês: Ração & Remédios
+            Meta PetVida: Ração & Remédios
           </span>
           <span className="text-emerald-700 font-black">78% alcançado</span>
         </div>
@@ -377,7 +376,7 @@ export default function PixDonationCheckout() {
       <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-3.5 flex items-start gap-2.5 text-emerald-950 text-xs leading-relaxed">
         <Sparkles className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
         <div>
-          <span className="font-extrabold text-emerald-900 block mb-0.5">Seu Impacto Real:</span>
+          <span className="font-extrabold text-emerald-900 block mb-0.5">Seu Impacto no PetVida:</span>
           <span className="font-medium text-emerald-800">{impactText}</span>
         </div>
       </div>
@@ -409,7 +408,7 @@ export default function PixDonationCheckout() {
       return (
         <>
           <Heart className="w-5 h-5 fill-white" />
-          <span>Salvar Vidas Agora</span>
+          <span>Salvar Vidas com PetVida</span>
         </>
       );
     }
@@ -450,7 +449,7 @@ export default function PixDonationCheckout() {
       return (
         <img
           src={imageSrc}
-          alt="QR Code PIX para doação de ração e medicamentos"
+          alt="QR Code PIX PetVida para doação"
           className="w-full h-auto rounded-lg"
         />
       );
@@ -471,9 +470,9 @@ export default function PixDonationCheckout() {
             <CheckCircle2 className="w-12 h-12" />
           </div>
           <div className="space-y-2">
-            <h2 className="text-2xl font-black text-slate-900">Muito obrigado por salvar vidas! 🐾</h2>
+            <h2 className="text-2xl font-black text-slate-900">Muito obrigado por salvar vidas no PetVida! 🐾</h2>
             <p className="text-slate-600 text-sm max-w-sm mx-auto leading-relaxed">
-              Sua doação foi confirmada com sucesso! Ela será convertida diretamente em ração, medicamentos e abrigo para os animais necessitados.
+              Sua doação foi confirmada com sucesso! Ela será convertida diretamente em ração, medicamentos e abrigo para os animais resgatados pelo PetVida.
             </p>
           </div>
           <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 text-center">
@@ -500,7 +499,7 @@ export default function PixDonationCheckout() {
           <div className="space-y-2">
             <h2 className="text-2xl font-black text-slate-900">PIX expirado</h2>
             <p className="text-slate-600 text-sm max-w-sm mx-auto leading-relaxed">
-              O tempo de 30 minutos para pagamento deste PIX expirou, mas os animais ainda precisam da sua ajuda!
+              O tempo de 30 minutos para pagamento deste PIX expirou, mas os animais do PetVida ainda precisam da sua ajuda!
             </p>
           </div>
           <button
@@ -517,7 +516,7 @@ export default function PixDonationCheckout() {
       return (
         <div className="space-y-6 animate-fadeIn">
           <div className="text-center space-y-1">
-            <span className="text-xs text-slate-500 uppercase font-bold tracking-wider">Valor da sua doação</span>
+            <span className="text-xs text-slate-500 uppercase font-bold tracking-wider">Valor da sua doação para o PetVida</span>
             <div className="text-3xl font-black text-emerald-600">
               {donationData ? formatCentsToBRL(donationData.amountCents) : ''}
             </div>
@@ -630,17 +629,17 @@ export default function PixDonationCheckout() {
               <PawPrint className="w-5 h-5 text-emerald-600" />
             </div>
             <div>
-              <h1 className="text-lg font-black text-slate-900 tracking-tight leading-tight">Salve Animais 🐾</h1>
+              <h1 className="text-xl font-black text-slate-900 tracking-tight leading-tight">PetVida 🐾</h1>
               <span className="text-[11px] text-emerald-700 font-bold flex items-center gap-1">
                 <CheckCircle className="w-3 h-3 text-emerald-600" />
-                Causa Verificada & Auditada
+                Resgate & Proteção Animal
               </span>
             </div>
           </div>
 
           <div className="flex items-center gap-1 bg-amber-50 border border-amber-200 text-amber-800 text-[10px] font-bold px-2.5 py-1 rounded-full">
             <Award className="w-3 h-3 text-amber-600" />
-            <span>Selo Transparência</span>
+            <span>Selo PetVida</span>
           </div>
         </div>
 
@@ -655,11 +654,11 @@ export default function PixDonationCheckout() {
         <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-medium">
           <div className="flex items-center gap-1.5">
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
-            <span>PIX Auditado Banco Central</span>
+            <span>Doação 100% segura via PIX</span>
           </div>
           <div className="flex items-center gap-1">
             <Users className="w-3.5 h-3.5 text-slate-400" />
-            <span>100% Transparente</span>
+            <span>© 2026 PetVida</span>
           </div>
         </div>
       </div>
