@@ -1,7 +1,8 @@
 {
-  "name": "doacao-pix-frontend",
+  "name": "petvida-frontend",
   "version": "0.1.0",
   "private": true,
+  "description": "PetVida - Checkout de Doacao via PIX para Animais Necessitados",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
