@@ -164,7 +164,7 @@ export default function PixDonationCheckout() {
 
     setLoading(true);
 
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://pix-donation-api.onrender.com';
 
     try {
       const response = await fetch(baseUrl + '/api/donations', {
@@ -233,7 +233,7 @@ export default function PixDonationCheckout() {
       return;
     }
 
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://pix-donation-api.onrender.com';
     const donationId = donationData.id;
 
     const pollInterval = setInterval(async () => {
