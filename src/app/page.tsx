@@ -1,5 +1,5 @@
-import PixDonationCheckout from '@/components/donation/PixDonationCheckout';
+import VakinhaCampaignPage from '@/components/campaign/VakinhaCampaignPage';
 
 export default function HomePage() {
-  return <PixDonationCheckout />;
+  return <VakinhaCampaignPage />;
 }
