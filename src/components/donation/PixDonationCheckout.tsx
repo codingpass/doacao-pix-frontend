@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import {
+  ArrowLeft,
   PawPrint,
   Heart,
   QrCode,
@@ -621,6 +623,16 @@ export default function PixDonationCheckout() {
 
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900 flex flex-col justify-center items-center p-4 selection:bg-emerald-500 selection:text-white">
+      <div className="w-full max-w-md mb-3 flex items-center justify-between">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-emerald-700 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-200 transition shadow-xs"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Voltar para a Campanha</span>
+        </Link>
+      </div>
+
       <div className="w-full max-w-md bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl space-y-5 relative overflow-hidden">
         {/* Header decoration */}
         <div className="flex items-center justify-between border-b border-slate-100 pb-4">
