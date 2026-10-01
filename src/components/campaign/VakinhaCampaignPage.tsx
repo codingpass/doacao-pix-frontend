@@ -53,7 +53,7 @@ const OTHER_STORIES = [
     goal: 'de R$ 30.000',
     percent: 94,
     hearts: 512,
-    image: 'https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=600&q=80',
+    image: '/campanha-racao.jpg',
   },
   {
     id: 3,
