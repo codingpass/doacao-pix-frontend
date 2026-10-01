@@ -62,7 +62,7 @@ const OTHER_STORIES = [
     goal: 'de R$ 3.200',
     percent: 83,
     hearts: 98,
-    image: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80',
+    image: '/cirurgia-bob.jpg',
   },
   {
     id: 4,
