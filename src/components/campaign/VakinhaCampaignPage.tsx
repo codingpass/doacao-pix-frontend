@@ -71,7 +71,7 @@ const OTHER_STORIES = [
     goal: 'de R$ 1.800',
     percent: 79,
     hearts: 65,
-    image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80',
+    image: '/branquina-esporotricose.jpg',
   },
 ];
 
