@@ -62,7 +62,7 @@ const OTHER_STORIES = [
     goal: 'de R$ 3.200',
     percent: 83,
     hearts: 98,
-    image: '/cirurgia-bob.jpg',
+    image: '/bob-urgente.jpg',
   },
   {
     id: 4,
