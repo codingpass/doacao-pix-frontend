@@ -44,7 +44,7 @@ const OTHER_STORIES = [
     goal: 'de R$ 4.500',
     percent: 85,
     hearts: 142,
-    image: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80',
+    image: '/rex-protese.png',
   },
   {
     id: 2,
