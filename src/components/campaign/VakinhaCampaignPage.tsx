@@ -163,8 +163,8 @@ export default function VakinhaCampaignPage() {
             {/* Imagem Hero de Destaque */}
             <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200 bg-slate-900 aspect-[16/10] sm:aspect-[16/9]">
               <img
-                src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=1200&q=85"
-                alt="Gatinhos e Cãezinhos Resgatados"
+                src="/abrigo-resgate.jpg"
+                alt="Abrigo PetVida - Animais Resgatados"
                 className="w-full h-full object-cover opacity-95"
               />
               
