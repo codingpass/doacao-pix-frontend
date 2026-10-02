@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   PawPrint,
@@ -79,6 +79,11 @@ export default function VakinhaCampaignPage() {
   const [activeTab, setActiveTab] = useState<'sobre' | 'atualizacoes' | 'apoiadores' | 'selos'>('sobre');
   const [copiedLink, setCopiedLink] = useState(false);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+
+  useEffect(() => {
+    // Pré-aquecimento do servidor Render em segundo plano para agilizar geração do PIX
+    fetch('https://pix-donation-api.onrender.com/api/donations', { method: 'GET', mode: 'no-cors' }).catch(() => {});
+  }, []);
 
   function handleShare() {
     if (typeof navigator !== 'undefined') {
