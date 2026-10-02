@@ -56,6 +56,13 @@ export default function PixDonationCheckout() {
   const [copied, setCopied] = useState<boolean>(false);
   const [secondsLeft, setSecondsLeft] = useState<number>(1800);
   const [liveIndex, setLiveIndex] = useState<number>(0);
+  const [loadingTime, setLoadingTime] = useState<number>(0);
+
+  useEffect(() => {
+    // Pré-aquecimento do backend no Render em segundo plano
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://pix-donation-api.onrender.com';
+    fetch(baseUrl + '/api/donations', { method: 'GET', mode: 'no-cors' }).catch(() => {});
+  }, []);
 
   useEffect(() => {
     const liveInterval = setInterval(() => {
@@ -146,12 +153,16 @@ export default function PixDonationCheckout() {
     setPresetAmount(amount);
     setCustomAmount('');
     setError(null);
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://pix-donation-api.onrender.com';
+    fetch(baseUrl + '/api/donations', { method: 'GET', mode: 'no-cors' }).catch(() => {});
   }
 
   function handleCustomAmountChange(e: React.ChangeEvent<HTMLInputElement>) {
     setCustomAmount(e.target.value);
     setPresetAmount(null);
     setError(null);
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://pix-donation-api.onrender.com';
+    fetch(baseUrl + '/api/donations', { method: 'GET', mode: 'no-cors' }).catch(() => {});
   }
 
   async function handleGeneratePix() {
@@ -165,6 +176,11 @@ export default function PixDonationCheckout() {
     }
 
     setLoading(true);
+    setLoadingTime(0);
+
+    const timer = setInterval(() => {
+      setLoadingTime((prev) => prev + 1);
+    }, 1000);
 
     const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://pix-donation-api.onrender.com';
 
@@ -202,6 +218,7 @@ export default function PixDonationCheckout() {
     } catch (err) {
       setError('Não foi possível conectar ao servidor PetVida. Verifique se a API backend está em execução.');
     } finally {
+      clearInterval(timer);
       setLoading(false);
     }
   }
@@ -400,11 +417,25 @@ export default function PixDonationCheckout() {
 
   function renderSubmitButtonContent() {
     if (loading) {
+      let stageText = 'Conectando ao sistema bancário...';
+      if (loadingTime >= 2 && loadingTime < 5) {
+        stageText = 'Registrando cobrança PIX oficial...';
+      } else if (loadingTime >= 5 && loadingTime < 9) {
+        stageText = 'Gerando QR Code e Copia e Cola...';
+      } else if (loadingTime >= 9) {
+        stageText = 'Iniciando servidor seguro... quase pronto!';
+      }
+
       return (
-        <>
-          <Loader2 className="w-5 h-5 animate-spin" />
-          <span>Gerando PIX Seguro...</span>
-        </>
+        <div className="flex flex-col items-center justify-center py-0.5">
+          <div className="flex items-center gap-2">
+            <Loader2 className="w-5 h-5 animate-spin text-white" />
+            <span className="font-extrabold">{stageText}</span>
+          </div>
+          <span className="text-[11px] text-emerald-100 font-semibold mt-0.5">
+            Comunicação criptografada com Banco Central ({loadingTime}s)
+          </span>
+        </div>
       );
     } else {
       return (
